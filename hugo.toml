@@ -1,0 +1,4 @@
+baseURL = "https://go-aiquota.github.io/"
+languageCode = "en-us"
+title = "go-aiquota"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
