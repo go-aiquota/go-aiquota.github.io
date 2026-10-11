@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{/* Dark Reader repaints pages that already draw their own dark theme, as this one does: ask it to stand aside. */}}
+<meta name="darkreader-lock">
 <title>{{ .Site.Title }} — AI usage quota, watched from the menu bar</title>
 <meta name="description" content="A cross-platform menu-bar app that monitors AI usage quotas (session/weekly limits) across multiple accounts in parallel, through a small gRPC plugin contract so a new provider is a new plugin, not a fork.">
 <style>
