@@ -1,4 +1,4 @@
 items:
   - { name: "tray", kind: "host app", desc: "The cross-platform menu-bar host: per-account tray items, the plugin manager, and the isolated onboarding window. Also ships <code>aiquota status</code> (live limits, exit codes) and the <code>quotaclaim</code> Claude Code hook that refuses an unmeasured limit claim." }
   - { name: "proto", kind: "contract", desc: "The shared <code>QuotaProvider</code> gRPC contract between the host and every provider plugin, plus the credential-safety types both sides build on." }
-  - { name: "plugin-claude", kind: "provider plugin", desc: "The reference <code>QuotaProvider</code> implementation, for Claude Max / Team Premium / Team Standard." }
+  - { name: "plugin-claude", kind: "provider plugin", desc: "The reference <code>QuotaProvider</code> implementation, for Claude Max / Team Premium / Team Standard, now reading Claude Code's own login so the numbers match the VS Code usage panel." }
