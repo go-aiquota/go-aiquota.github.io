@@ -59,6 +59,15 @@
   <main id="repos" class="legacy"><div class="wrap">
     <p class="lead"><code>go-aiquota</code> is a cross-platform menu-bar app that watches AI usage quotas — session and weekly limits — across multiple accounts at once (Claude Max, Claude Team Premium, Claude Team Standard today). Each provider is a separate subprocess plugin talking a small <a href="https://github.com/hashicorp/go-plugin">hashicorp/go-plugin</a> gRPC contract (<code>go-aiquota/proto</code>), so adding a provider is writing a plugin, not forking the host. Onboarding an account drives a real, isolated embedded browser straight to the provider's own login page — no manual cookie copying, no devtools.</p>
 
+    <div class="contract" id="install">
+      <h2>Install the VS Code status bar</h2>
+      <p>No Go needed. Sign in to Claude Code in VS Code first (aiquota reads that login, and sends it only to <code>api.anthropic.com</code>), then:</p>
+      <p>1. Download the archive for your system from the <a href="https://github.com/go-aiquota/tray/releases/latest">aiquota releases</a> (Linux, macOS, Windows, FreeBSD, OpenBSD, NetBSD; amd64 and arm64) with <code>SHA256SUMS</code>, check it, and put <code>aiquota</code> and <code>go-aiquota-plugin-claude</code> in one folder (<code>~/.local/bin</code>).</p>
+      <p>2. Download the <code>.vsix</code> from the <a href="https://github.com/go-aiquota/vscode-statusbar/releases/latest">extension releases</a>; in VS Code, Extensions view, the <code>...</code> menu, <strong>Install from VSIX...</strong>.</p>
+      <p>3. Run <code>aiquota status</code> in a terminal; the status bar shows <code>Claude 5h 57%</code>, <code>7d 10%</code>.</p>
+      <p>Step by step, with macOS Gatekeeper, per-OS folders, update and uninstall: the <a href="https://github.com/go-aiquota/vscode-statusbar#install">install guide</a>. Linux, macOS and Windows binaries are tested on CI runners; the BSD ones are built, not run.</p>
+    </div>
+
     <div class="contract">
       <h2>Adding a provider</h2>
       <p>Implement the QuotaProvider contract and serve it as a go-plugin subprocess:</p>
