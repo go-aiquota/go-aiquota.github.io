@@ -42,10 +42,8 @@
     <div>
       <h1 class="head">go-aiquota</h1>
       <p class="sub">Your AI usage quotas — <strong>session and weekly limits</strong>, across <strong>multiple accounts</strong> — watched from the menu bar, in parallel.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="https://go-aiquota.github.io/docs/">{{ partial "icons/book.html" . }}Documentation</a>
-        <a class="btn btn-ghost" href="https://github.com/go-aiquota">{{ partial "icons/github.html" . }}GitHub</a>
-      </div>
+      {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
+      {{ partial "cta.html" . }}
       <div class="trust"><span class="pill">multi-account</span><span class="pill">gRPC plugin architecture</span><span class="pill">OS keyring</span><span class="pill">no manual cookie paste</span><span class="pill">macOS · Linux · Windows</span>{{ if not (partial "mantra-on.html" $) }}<span class="pill">BSD-3-Clause</span>{{ end }}</div>
     </div>
     {{ partial "hero-carousel.html" . }}
