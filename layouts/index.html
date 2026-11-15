@@ -34,6 +34,7 @@
 <body class="lm">
   <header class="nav"><div class="wrap">
     <a class="brand" href="/"><img class="glyph" src="/img/logo.svg" width="32" height="32" alt="go-aiquota logo"> {{ .Site.Title }}</a>
+    <nav><a href="#repos">Repositories</a><a href="https://go-aiquota.github.io/docs/main/">Docs</a></nav>
     {{ partial "theme-toggle.html" . }}
   </div></header>
   {{ partial "fork-ribbon.html" "https://github.com/go-aiquota" }}
@@ -57,25 +58,9 @@
   <main id="repos" class="legacy"><div class="wrap">
     <p class="lead"><code>go-aiquota</code> is a cross-platform menu-bar app that watches AI usage quotas — session and weekly limits — across multiple accounts at once (Claude Max, Claude Team Premium, Claude Team Standard today). Each provider is a separate subprocess plugin talking a small <a href="https://github.com/hashicorp/go-plugin">hashicorp/go-plugin</a> gRPC contract (<code>go-aiquota/proto</code>), so adding a provider is writing a plugin, not forking the host. Onboarding an account drives a real, isolated embedded browser straight to the provider's own login page — no manual cookie copying, no devtools.</p>
 
-    <div class="contract" id="install">
-      <h2>Install the VS Code status bar</h2>
-      <p>Current: aiquota v0.9.0, extension v0.3.2; a window at 100 % shows its reset time in the status bar item. No Go needed. Sign in to Claude Code in VS Code first (aiquota reads that login, and sends it only to <code>api.anthropic.com</code>), then:</p>
-      <p>1. Download the archive for your system from the <a href="https://github.com/go-aiquota/tray/releases/latest">aiquota releases</a> (Linux, macOS, Windows, FreeBSD, OpenBSD, NetBSD; amd64 and arm64) with <code>SHA256SUMS</code>, check it, and put <code>aiquota</code> and <code>go-aiquota-plugin-claude</code> in one folder (<code>~/.local/bin</code>).</p>
-      <p>2. Download the <code>.vsix</code> from the <a href="https://github.com/go-aiquota/vscode-statusbar/releases/latest">extension releases</a>; in VS Code, Extensions view, the <code>...</code> menu, <strong>Install from VSIX...</strong>.</p>
-      <p>3. Run <code>aiquota status</code> in a terminal; the status bar shows <code>Claude 5h 57%</code>, <code>7d 10%</code>.</p>
-      <p>Step by step, with macOS Gatekeeper, per-OS folders, update and uninstall: the <a href="https://github.com/go-aiquota/vscode-statusbar#install">install guide</a>. Linux, macOS and Windows binaries are tested on CI runners; the BSD ones are built, not run.</p>
-    </div>
-
-    <div class="contract">
-      <h2>Adding a provider</h2>
-      <p>Implement the QuotaProvider contract and serve it as a go-plugin subprocess:</p>
-      <pre><code>func (p *myProvider) Describe(...) (*quotapb.ProviderInfo, error) { ... }
-func (p *myProvider) FetchQuota(...) (*quotapb.QuotaSnapshot, error) { ... }
-
-hcplugin.Serve(&amp;hcplugin.ServeConfig{
-    HandshakeConfig: plugin.Handshake,
-    Plugins:         plugin.Map(p),
-})</code></pre>
+    <div class="contract" id="docs">
+      <h2>Documentation</h2>
+      <p>Everything about using it lives in the <a href="https://go-aiquota.github.io/docs/main/">documentation</a>: <a href="https://go-aiquota.github.io/docs/main/install/">installing</a> (for someone who uses VS Code and nothing else), the <a href="https://go-aiquota.github.io/docs/main/repos/vscode-statusbar/">status bar</a>, the <a href="https://go-aiquota.github.io/docs/main/repos/tray/#cli"><code>aiquota</code> command line</a>, the <a href="https://go-aiquota.github.io/docs/main/repos/tray/#quotaclaim"><code>quotaclaim</code> hook</a> and <a href="https://go-aiquota.github.io/docs/main/repos/proto/#adding-a-provider">adding a provider</a>.</p>
     </div>
 
     <h2 class="section">Repositories</h2>
@@ -87,7 +72,7 @@ hcplugin.Serve(&amp;hcplugin.ServeConfig{
           <a href="https://github.com/go-aiquota/{{ .name }}"><code>{{ .name }}</code></a>
           <span class="kind">{{ .kind }}</span>
         </h3>
-        <p>{{ .desc | safeHTML }}</p>
+        <p>{{ .desc | safeHTML }} <a href="https://go-aiquota.github.io/docs/main/repos/{{ .name }}/">Documentation</a>.</p>
         <div class="badges">
           <a href="https://github.com/go-aiquota/{{ .name }}/actions/workflows/ci.yml"><img src="https://github.com/go-aiquota/{{ .name }}/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
           <a href="https://pkg.go.dev/github.com/go-aiquota/{{ .name }}"><img src="https://pkg.go.dev/badge/github.com/go-aiquota/{{ .name }}.svg" alt="Go Reference"></a>
