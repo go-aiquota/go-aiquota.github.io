@@ -1,5 +1,5 @@
 items:
-  - { name: "tray", kind: "host app", desc: "The cross-platform menu-bar host: one tray item per account, the plugin manager, an isolated onboarding window, and the <code>aiquota</code> command line." }
+  - { name: "tray", kind: "host app", desc: "The cross-platform menu-bar host: one tray item per account, the plugin manager, an isolated onboarding window, and the <code>aiquota</code> command line (<code>aiquota status --model sonnet</code> answers whether one model is usable right now on the active plan)." }
   - { name: "vscode-statusbar", kind: "VS Code extension", desc: "Status bar items that keep the Claude usage permanently visible in VS Code, one per window, coloured from green to red." }
   - { name: "proto", kind: "contract", desc: "The shared <code>QuotaProvider</code> gRPC contract between the host and every provider plugin, plus the credential-safety types both sides build on." }
   - { name: "plugin-claude", kind: "provider plugin", desc: "The reference provider, for Claude Max / Team Premium / Team Standard." }
